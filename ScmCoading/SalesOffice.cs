@@ -23,14 +23,51 @@ namespace ScmCoading
 
         public int GetCartValue()
         {
-            var cartItems = this.cart.GetCartItems();
+            var cartItems = this.cart.GetCartItems().ToList();
             var offers = this.store.GetOffersInStore();
-            var value = this.MatchOfferAndGetValue(cartItems, offers);
+            var value = this.GetValueForNotClubbedOffers(cartItems, offers);
+            value = value + this.GetValueForClubbedOffers(cartItems, offers);
             return 0;
         }
 
-        private int MatchOfferAndGetValue(IEnumerable<Item> items, IEnumerable<Offer> offers)
+        private int GetValueForNotClubbedOffers(List<Item> cartItems, IEnumerable<Offer> offers)
         {
+            int cartValue = 0;
+            var items = cartItems.ToArray();
+            foreach (var item in items)
+            {
+                var offer = offers.FirstOrDefault(f => f.OfferItems.Contains(item.Name) && !f.IsClubedOffer);
+                if (offer != null && offer.Quantity <= item.Quantity)
+                {
+                    var totalOfferAvailed = item.Quantity / offer.Quantity;
+                    var leftItem = item.Quantity - totalOfferAvailed;
+                    cartValue = cartValue + totalOfferAvailed * offer.Price + leftItem * this.store.GetItemPrice(item.Name);
+
+                    cartItems.Remove(item);
+                }
+            }
+
+            return cartValue;
+        }
+
+        private int GetValueForClubbedOffers(List<Item> cartItems, IEnumerable<Offer> offers)
+        {
+            int cartValue = 0;
+            var items = cartItems.ToArray();
+            foreach (var item in items)
+            {
+                var offer = offers.FirstOrDefault(f => f.OfferItems.Contains(item.Name) && f.IsClubedOffer);
+                if (offer != null)
+                {
+                    var clubbedItem = cartItems.FirstOrDefault(f => f.Name != item.Name && offer.OfferItems.Contains(f.Name));
+                    cartValue = cartValue + offer.Price;
+
+                    cartItems.Remove(item);
+                    cartItems.Remove(clubbedItem);
+                }
+            }
+
+            return cartValue;
         }
     }
 }

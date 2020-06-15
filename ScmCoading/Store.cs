@@ -33,7 +33,7 @@ namespace ScmCoading
 
         public int GetItemPrice(string name)
         {
-            return this.Items.Single(s => s.Name == name).Price;
+            return this.Items.Single(s => s.Name == name).Price.Value;
         }
     }
 }
