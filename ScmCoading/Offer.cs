@@ -21,5 +21,13 @@ namespace ScmCoading
         public int Quantity { get; private set; }
 
         public int Price { get; private set; }
+
+        public bool IsClubedOffer
+        {
+            get
+            {
+                return this.OfferItems.Count > 1;
+            }
+        }
     }
 }
