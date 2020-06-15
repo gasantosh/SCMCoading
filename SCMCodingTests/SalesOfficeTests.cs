@@ -52,5 +52,22 @@ namespace SCMCodingTests
             // Assertions 
             Assert.AreEqual(370, cartValue);
         }
+
+        [TestMethod]
+        public void GetCartValue_WhenNClubbedOffer_ShouldReturnOfferValue()
+        {
+            // Actors
+            var salesOffice = new SalesOffice(this.store);
+            salesOffice.SellItem("A", 3);
+            salesOffice.SellItem("B", 5);
+            salesOffice.SellItem("C", 1);
+            salesOffice.SellItem("D", 1);
+
+            // Activity
+            var cartValue = salesOffice.GetCartValue();
+
+            // Assertions 
+            Assert.AreEqual(280, cartValue);
+        }
     }
 }
