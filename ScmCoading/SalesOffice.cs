@@ -10,10 +10,10 @@ namespace ScmCoading
     {
         private Cart cart;
         private Store store;
-        public SalesOffice()
+        public SalesOffice(Store store)
         {
             this.cart = new Cart();
-            this.store = new Store();
+            this.store = store;
         }
 
         public void SellItem(string name, int quantity)
