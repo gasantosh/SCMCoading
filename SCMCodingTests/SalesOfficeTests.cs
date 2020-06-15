@@ -54,7 +54,7 @@ namespace SCMCodingTests
         }
 
         [TestMethod]
-        public void GetCartValue_WhenNClubbedOffer_ShouldReturnOfferValue()
+        public void GetCartValue_WhenClubbedOffer_ShouldReturnOfferValue()
         {
             // Actors
             var salesOffice = new SalesOffice(this.store);
