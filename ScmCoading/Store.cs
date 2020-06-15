@@ -15,7 +15,12 @@ namespace ScmCoading
             this.Items = new List<Item>();
             this.offerHandler = new OfferHandler();
 
-            CreateItemsInStore();
+            this.CreateItemsInStore();
+            this.CreateOffers();
+        }
+
+        private void CreateOffers()
+        {
             this.offerHandler.AddOffer(new[] { "A" }, 3, 130);
             this.offerHandler.AddOffer(new[] { "B" }, 2, 45);
             this.offerHandler.AddOffer(new[] { "C", "D" }, 1, 30);

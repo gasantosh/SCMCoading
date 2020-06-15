@@ -24,5 +24,10 @@ namespace ScmCoading
             var offer = new Offer(offerItems, quantity, price);
             this.offers.Add(offer);
         }
+
+        public List<Offer> GetOffers()
+        {
+            return this.offers;
+        }
     }
 }
