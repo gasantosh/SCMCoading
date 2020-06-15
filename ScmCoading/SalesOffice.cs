@@ -41,7 +41,7 @@ namespace ScmCoading
                 if (offer != null && offer.Quantity <= item.Quantity)
                 {
                     var totalOfferAvailed = item.Quantity / offer.Quantity;
-                    var leftItem = item.Quantity - totalOfferAvailed;
+                    var leftItem = item.Quantity - totalOfferAvailed * offer.Quantity;
                     cartValue = cartValue + totalOfferAvailed * offer.Price + leftItem * this.store.GetItemPrice(item.Name);
 
                     cartItems.Remove(item);

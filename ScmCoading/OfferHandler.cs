@@ -19,7 +19,7 @@ namespace ScmCoading
             return this.offers;
         }
 
-        public void AddOffer(IEnumerable<string> offerItems, int quantity, int price)
+        public void AddOffer(IEnumerable<string> offerItems, int price, int quantity)
         {
             var offer = new Offer(offerItems, quantity, price);
             this.offers.Add(offer);
