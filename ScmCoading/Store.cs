@@ -23,10 +23,10 @@ namespace ScmCoading
 
         private void CreateItemsInStore()
         {
-            this.Items.Add(new Item("A", 50));
-            this.Items.Add(new Item("B", 30));
-            this.Items.Add(new Item("C", 20));
-            this.Items.Add(new Item("D", 10));
+            this.Items.Add(new Item("A", 50, 500));
+            this.Items.Add(new Item("B", 30, 500));
+            this.Items.Add(new Item("C", 20, 500));
+            this.Items.Add(new Item("D", 10, 500));
         }
     }
 }
