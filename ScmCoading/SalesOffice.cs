@@ -27,6 +27,7 @@ namespace ScmCoading
             var offers = this.store.GetOffersInStore();
             var value = this.GetValueForNotClubbedOffers(cartItems, offers);
             value = value + this.GetValueForClubbedOffers(cartItems, offers);
+            value = value + this.GetValueCartItems(cartItems);
             return 0;
         }
 
@@ -65,6 +66,17 @@ namespace ScmCoading
                     cartItems.Remove(item);
                     cartItems.Remove(clubbedItem);
                 }
+            }
+
+            return cartValue;
+        }
+
+        private int GetValueCartItems(List<Item> cartItems)
+        {
+            int cartValue = 0;
+            foreach (var item in cartItems)
+            {
+                cartValue = cartValue + item.Quantity * this.store.GetItemPrice(item.Name);
             }
 
             return cartValue;
