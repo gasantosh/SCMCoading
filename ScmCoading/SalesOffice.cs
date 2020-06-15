@@ -28,7 +28,7 @@ namespace ScmCoading
             var value = this.GetValueForNotClubbedOffers(cartItems, offers);
             value = value + this.GetValueForClubbedOffers(cartItems, offers);
             value = value + this.GetValueCartItems(cartItems);
-            return 0;
+            return value;
         }
 
         private int GetValueForNotClubbedOffers(List<Item> cartItems, IEnumerable<Offer> offers)
@@ -61,10 +61,13 @@ namespace ScmCoading
                 if (offer != null)
                 {
                     var clubbedItem = cartItems.FirstOrDefault(f => f.Name != item.Name && offer.OfferItems.Contains(f.Name));
-                    cartValue = cartValue + offer.Price;
+                    if (clubbedItem != null)
+                    {
+                        cartValue = cartValue + offer.Price;
 
-                    cartItems.Remove(item);
-                    cartItems.Remove(clubbedItem);
+                        cartItems.Remove(item);
+                        cartItems.Remove(clubbedItem);
+                    }
                 }
             }
 

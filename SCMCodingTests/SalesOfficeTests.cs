@@ -34,7 +34,7 @@ namespace SCMCodingTests
             var cartValue = salesOffice.GetCartValue();
 
             // Assertions 
-            Assert.Equals(100, cartValue);
+            Assert.AreEqual(100, cartValue);
         }
     }
 }
