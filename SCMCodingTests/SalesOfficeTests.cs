@@ -8,6 +8,7 @@ namespace SCMCodingTests
     public class SalesOfficeTests
     {
         private readonly Store store;
+
         public SalesOfficeTests()
         {
             this.store = new Store();
@@ -21,8 +22,19 @@ namespace SCMCodingTests
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void GetCartValue_WhenNoOffer_ShouldReturnActualValue()
         {
+            // Actors
+            var salesOffice = new SalesOffice(this.store);
+            salesOffice.SellItem("A", 1);
+            salesOffice.SellItem("B", 1);
+            salesOffice.SellItem("C", 1);
+
+            // Activity
+            var cartValue = salesOffice.GetCartValue();
+
+            // Assertions 
+            Assert.Equals(100, cartValue);
         }
     }
 }
