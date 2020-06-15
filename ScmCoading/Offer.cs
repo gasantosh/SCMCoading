@@ -8,16 +8,18 @@ namespace ScmCoading
 {
     public class Offer
     {
-        private List<string> offerItesms;
-        public Offer()
+        public Offer(IEnumerable<string> offerItesms, int quantity, int price)
         {
-            this.offerItesms = new List<string>();
+            this.OfferItems = new List<string>();
+            this.OfferItems.AddRange(offerItesms);
+            this.Quantity = quantity;
+            this.Price = price;
         }
 
-        public List<string> OfferItems { get; set; }
+        public List<string> OfferItems { get; private set; }
 
-        public int Quantity { get; set; }
+        public int Quantity { get; private set; }
 
-        public int Price { get; set; }
+        public int Price { get; private set; }
     }
 }
