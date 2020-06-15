@@ -23,7 +23,14 @@ namespace ScmCoading
 
         public int GetCartValue()
         {
+            var cartItems = this.cart.GetCartItems();
+            var offers = this.store.GetOffersInStore();
+            var value = this.MatchOfferAndGetValue(cartItems, offers);
             return 0;
+        }
+
+        private int MatchOfferAndGetValue(IEnumerable<Item> items, IEnumerable<Offer> offers)
+        {
         }
     }
 }

@@ -30,5 +30,10 @@ namespace ScmCoading
         {
             return this.offerHandler.GetOffers();
         }
+
+        public int GetItemPrice(string name)
+        {
+            return this.Items.Single(s => s.Name == name).Price;
+        }
     }
 }

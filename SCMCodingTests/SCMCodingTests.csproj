@@ -53,6 +53,12 @@
     <Compile Include="SalesOfficeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ScmCoading\ScmCoading.csproj">
+      <Project>{8a1a6d77-985e-419b-93d1-9f698842539a}</Project>
+      <Name>ScmCoading</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
